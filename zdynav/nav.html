@@ -1,0 +1,136 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+
+<title>登录验证 作者:小白杨</title>
+<script src="jquery-3.2.1.js"></script>
+<style>
+*{
+	margin:0px;
+	padding:0px;}
+nav{
+	margin:15px auto;
+	overflow:auto}
+li{
+	line-height:30px;}
+nav>ul>li{
+	list-style-type:none;
+	float:left;
+	width:150px;
+	background:#ccc;
+	margin-left:15px;
+	border-radius:4px;
+	text-align:center;
+	cursor:default;}
+ul>li li{
+	border-bottom:1px #999 solid;
+	box-shadow:0px 3px 5px 0px #999;
+	margin-bottom:5px;	
+	transition:all 1s;
+	-moz-transition:all 1s;
+	-webkit-transition:all 1s;
+	-o-transition:all 1s;}
+ul>li li:hover{
+	background:#DFDFDF;
+	}
+</style>
+</head>
+
+<body>
+	<!--二级菜单-->
+    <div align="center">这个可以根据数据来自动创建菜单导航的数量一级菜单项的数量</div>
+	<nav>
+		<ul>
+			<li>1</li>
+		</ul>
+	</nav>
+</body>
+<script>
+	$(function(){
+		//内容模型预设
+		var con = {
+					"Htitle":["标题1","标题2","标题3","标题4","标题5"],
+					"con_1":["标题1的内容1","标题1的内容2","标题1的内容3","标题1的内容4","标题1的内容5"],
+					"con_2":["标题2的内容1","标题2的内容2","标题2的内容3","标题2的内容4","标题2的内容5"],
+					"con_3":["标题3的内容1","标题3的内容2","标题3的内容3","标题3的内容4","标题3的内容5"],
+					"con_4":["标题4的内容1","标题4的内容2","标题4的内容3","标题4的内容4","标题4的内容5"],
+					"con_5":["标题5的内容1","标题5的内容2","标题5的内容3","标题5的内容4","标题5的内容5"]
+				  };
+		
+		//得到html元素
+		var $ul = $('nav>ul'); //一级ul
+		var $cli = $ul.children('li').eq(0).remove(); //删除DOM 保存到内存中
+		//根据数据创建标题数量
+		var much = con["Htitle"].length;
+		//创建一级菜单
+		createNextMnue($ul,much);
+				
+		var $li = $ul.children('li'); //一级li组
+		//标题装载
+		var obj = $li;
+		loadCon(obj,con["Htitle"]);
+		
+		
+		//创建二级菜单
+		
+		function getNum(){
+			var conMnueNum = 0;
+			$.each(con,function(i,val){
+				if(i != "Htitle"){
+					conMnueNum ++;
+					}
+				});
+				return conMnueNum;
+			}
+		
+		var nextMnueNum = getNum();
+		createNextMnue($li,nextMnueNum);	
+		//二级菜单交互
+		var $secondli = $('ul>li li');
+		$secondli.hide(); //默认二级菜单隐藏
+		$('nav>ul>li').hover(function(){
+			$(this).children('li').show();
+			},function(){
+				$secondli.hide();
+				});	
+		
+		
+		//内容装载
+		var count = 0; //遍历nav一级li所使用的索引
+		$.each(con,function(i,val){
+			if(i != "Htitle"){ //排除标题组的内容
+				var $liChild = $li.eq(count).children('li'); //获取每个nav的一级li对应的二级li组
+				var valArray = con[i];
+				loadCon($liChild,valArray);
+				count++;
+				}
+			});
+		
+		//布局nav的宽度
+		var liWidth = $li.width()*$li.length+($li.length+1)*15;// 一个li的宽度*li的个数+(li的个数+1)*li的左边距
+		$('nav').width(liWidth);
+		
+		/**
+		  *obj:放置新创建li的容器
+		  *much:创建的标题有多少个
+		  */
+		function createNextMnue(obj,much){
+		for(var i=0; i<much; i++){ //在一级ul里面添加5个li节点
+			$newcli = $cli.clone(true);
+			obj.append($newcli);
+			}
+		}
+
+		
+		/**
+		  *obj:需要存放内容的li组
+		  *valArray:存放内容的数组对象
+		  */
+		function loadCon(obj,valArray){
+			for(var i=0; i<obj.length; i++){
+				obj.eq(i).text(valArray[i]);
+				}
+			};
+		});
+</script>
+</html>

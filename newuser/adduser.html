@@ -1,0 +1,63 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+
+<title>登录验证 作者:小白杨</title>
+<script src="jquery-3.2.1.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="js.js"></script>
+<link rel="stylesheet" type="text/css" href="bs/bootstrap.min.css">
+<style>
+form{
+	width:300px;}
+</style>
+</head>
+
+<body>
+	<form action="" method="post">
+    <div class="panel-heading" style="color:#216FE7;">用户登录</div>
+        <div class="panel-body">
+            <div class="form-group">
+            <input type="text" placeholder="请输入账号" name="username" class="userName form-control">
+            <label for=""><a href="" class="zhts">用户名不能为纯数字</a></label>
+            </div>
+            <div class="form-group">
+                 <input type="password" placeholder="请输入密码" name="userpwd" class="userPwd form-control">
+                <label for=""><a href="" class="pwdts">密码不能为纯数字</a></label>
+            </div>
+            <div class="form-group">
+                  <input type="password" placeholder="确认密码" name="qruserPwd" class="qruserPwd form-control">
+                <label for=""><a href="" class="qrpwdts">忘记密码</a></label>
+            </div>           
+  			<div class="form-group">
+              <p>
+                  <label>
+                    <input type="radio" name="sex" value="男" checked>男
+                  </label>
+                  <label>
+                    <input type="radio" name="sex" value="女" >女
+                  </label>
+                  <br>
+              </p>
+            </div> 
+            <div class="banner-select">
+                <select style="width:270px;height:34px;border-radius:4px;">
+                    <option value="Wnews">文字新闻</option>
+                    <option value="Pnews">图片新闻</option>
+                    <option value="Mnews">媒体新闻</option>
+                </select>
+            </div>
+            <br> 
+            <div>
+            	<textarea placeholder="个人说明" style="width:270px;"></textarea>
+            </div>
+            <div>
+            	<input type="submit" class="btn btn-default" value="提交">
+                <input type="reset" class="btn btn-default" value="重置">
+            </div>         
+      </div>
+    </div>
+    </form>
+
+</body>
+</html>
