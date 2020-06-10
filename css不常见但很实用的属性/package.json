@@ -1,0 +1,12 @@
+{
+  "name": "css",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "can": "npx caniuse"
+  },
+  "dependencies": {
+    "caniuse-cmd": "^1.3.1"
+  }
+}

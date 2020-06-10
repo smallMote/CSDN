@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #eeefee;
+}
+.card {
+  width: 252px;
+  min-height: 252px;
+  margin: 24px auto;
+  padding: 24px;
+  border-radius: 6px;
+  box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.1),
+              -15px -15px 30px rgba(255, 255, 255, 0.8);
+}
+.line-clamp {
+  min-height: auto;
+  display: -webkit-box; /*值必须为-webkit-box或者-webkit-inline-box*/
+  -webkit-box-orient: vertical; /*值必须为vertical*/
+  -webkit-line-clamp: 2; /*值为数字，表示一共显示几行*/
+  overflow: hidden;
+  padding-bottom: 0; /* 这是因为display: -webkit-box;导致设置的底部内边距失效，所以直接不要*/
+}
+.caret-color input,
+.caret-color textarea {
+  width: calc(100% - 24px);
+  padding: 12px;
+  caret-color: red;
+}
+.caret-color textarea {
+  margin-top: 12px;
+  background-color: #000;
+  caret-color: yellow;
+  color: #eeefee;
+}
+.clip-path img:first-child {
+  clip-path: circle(50px); /* 默认剪裁的圆心是元素的中心*/
+}
+.clip-path img:nth-child(2){
+  clip-path: ellipse(80px 40px at 50% 50%); /* 长短轴，圆心坐标x,y */
+}
+.clip-path img:nth-child(3){
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+.shape-box {
+  width: 100px;
+  height: 100px;
+  background-color: teal;
+  float: left;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  shape-outside: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  margin: 10px;
+  margin-left: 0;
+}
+.conic-gradient {
+  color: #fff;
+  background: linear-gradient(red, orange, black, green, blue);
+  background: radial-gradient(red, orange, black, black, black); /* , green, blue */
+  background: conic-gradient( red, orange, black, green, blue);
+}
